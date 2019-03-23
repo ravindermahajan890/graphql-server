@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "alias": ["graphql.ravindermahajan.co.in/api/v1/"],
   "builds": [
     {
       "src": "server.js",
