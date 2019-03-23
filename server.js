@@ -6,6 +6,7 @@ var { makeExecutableSchema } = require("graphql-tools");
 var myData = [
   { name: "Ravinder Mahajan", age: 29 },
   { name: "Khushboo Mahajan", age: 28 },
+  { name: "yedhant Gupta", age: 30 },
   { name: "Raman Mahajan", age: 58 },
   { name: "Ruby Mahajan", age: 53 }
 ];
