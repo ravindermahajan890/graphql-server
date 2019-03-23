@@ -4,9 +4,9 @@ var cors = require("cors");
 var { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
 var { makeExecutableSchema } = require("graphql-tools");
 var myData = [
-  { name: "ravoider", age: 20 },
-  { name: "ravoider", age: 21 },
-  { name: "ravoider", age: 22 }
+  { name: "ravinder", age: 20 },
+  { name: "khushboo", age: 21 },
+  { name: "raju", age: 22 }
 ];
 
 var typeDefs = [
