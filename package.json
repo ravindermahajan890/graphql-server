@@ -1,0 +1,27 @@
+{
+  "name": "hackernews-react-apollo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "1.4.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "graphql": "^14.1.1",
+    "graphql-tools": "^4.0.4",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-relay": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-plugin-relay": "^3.0.0"
+  }
+}
