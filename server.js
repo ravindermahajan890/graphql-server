@@ -14,8 +14,8 @@ db.once("open", function() {
 });
 
 var todoSchema = new mongoose.Schema({
-  name: String,
-  age: Number
+  task: String,
+  detail: Number
 });
 var Todo = mongoose.model("todo", todoSchema);
 
@@ -27,12 +27,12 @@ type Query {
 }
 
 type Mutation {
-  post(name: String!, age: Int!): [Post!]
+  post(task: String!, detail: String!): [Post!]
 }
 
 type Post {
-    name: String
-    age: Int
+    task: String
+    detail: String
 }
 schema {
   query: Query,
@@ -54,7 +54,7 @@ var resolvers = {
   },
   Mutation: {
     post(root, args) {
-      var dataToSave = new Todo({ age: args.age, name: args.name });
+      var dataToSave = new Todo({ task: args.task, detail: args.detail });
       var entries = Todo.insertMany([dataToSave]).then(function(data) {
         return data;
       });
