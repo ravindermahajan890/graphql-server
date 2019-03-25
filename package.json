@@ -17,6 +17,7 @@
     "express": "^4.16.4",
     "graphql": "^14.1.1",
     "graphql-tools": "^4.0.4",
+    "mongoose": "^5.4.19",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-relay": "^3.0.0"
