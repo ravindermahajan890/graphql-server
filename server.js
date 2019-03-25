@@ -4,14 +4,6 @@ var cors = require("cors");
 var mongoose = require("mongoose");
 var { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
 var { makeExecutableSchema } = require("graphql-tools");
-var myData = [
-  { name: "Ravinder Mahajan", age: 29 },
-  { name: "Khushboo Mahajan", age: 28 },
-  { name: "Yedhant Gupta", age: 30 },
-  { name: "Raman Mahajan", age: 58 },
-  { name: "Ruby Mahajan", age: 53 }
-];
-
 mongoose.connect(
   "mongodb+srv://ravs890:Khubu890@cluster0-zbt5x.mongodb.net/test?retryWrites=true"
 );
@@ -26,15 +18,6 @@ var todoSchema = new mongoose.Schema({
   age: Number
 });
 var Todo = mongoose.model("todo", todoSchema);
-// var data1 = new Todo({ name: "Ravinder Mahajan", age: 29 });
-// var data2 = new Todo({ name: "Khushboo Mahajan", age: 28 });
-// var data3 = new Todo({ name: "Yedhant Gupta", age: 30 });
-// var data4 = new Todo({ name: "Raman Mahajan", age: 58 });
-// var data5 = new Todo({ name: "Ruby Mahajan", age: 53 });
-
-// Todo.insertMany([data1, data2, data3, data4, data5], function(er, data) {
-//   console.log(data);
-// });
 
 var typeDefs = [
   `
@@ -43,12 +26,17 @@ type Query {
   fetch: [Post!]!
 }
 
+type Mutation {
+  post(name: String!, age: Int!): [Post!]
+}
+
 type Post {
     name: String
     age: Int
 }
 schema {
-  query: Query
+  query: Query,
+  mutation: Mutation
 }`
 ];
 
@@ -62,6 +50,15 @@ var resolvers = {
         return data;
       });
       return fetchData;
+    }
+  },
+  Mutation: {
+    post(root, args) {
+      var dataToSave = new Todo({ age: args.age, name: args.name });
+      var entries = Todo.insertMany([dataToSave]).then(function(data) {
+        return data;
+      });
+      return entries;
     }
   }
 };
