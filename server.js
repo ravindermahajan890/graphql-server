@@ -43,7 +43,7 @@ schema {
 var resolvers = {
   Query: {
     hello(root) {
-      return "world";
+      return "world....";
     },
     async fetch(root, args) {
       var fetchData = await Todo.find(function(e, data) {
