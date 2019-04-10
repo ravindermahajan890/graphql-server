@@ -73,7 +73,7 @@ var resolvers = {
       return entries;
     },
     delete(root, args) {
-      console.log(Todo.find({ taskId: args.task }));
+      console.log(Todo.find({ taskId: args.taskId }));
     }
   }
 };
