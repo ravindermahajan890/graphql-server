@@ -30,7 +30,7 @@ type Query {
 
 type Mutation {
   post(task: String!, detail: String!, taskId: String, pending: Boolean): [Post!]
-  delete(taskId: String!): Post!
+  delete(taskId: String!):Post!
 }
 
 type Post {
@@ -72,8 +72,13 @@ var resolvers = {
       });
       return entries;
     },
-    delete(root, args) {
-      console.log(Todo.find({ taskId: args.taskId }));
+    async delete(root, args) {
+      var fetchData = await Todo.findOne({ taskId: args.taskId }).then(function(
+        data
+      ) {
+        return data;
+      });
+      return fetchData;
     }
   }
 };
