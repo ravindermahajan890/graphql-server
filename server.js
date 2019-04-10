@@ -28,13 +28,14 @@ type Query {
 }
 
 type Mutation {
-  post(task: String!, detail: String!, taskId: String): [Post!]
+  post(task: String!, detail: String!, taskId: String, pending: Boolean): [Post!]
 }
 
 type Post {
     task: String
     detail: String
     taskId: String
+    pending: Boolean
 }
 schema {
   query: Query,
@@ -61,7 +62,8 @@ var resolvers = {
         detail: args.detail,
         taskId: Math.random()
           .toString(36)
-          .substring(2)
+          .substring(2),
+        pending: true
       });
       var entries = Todo.insertMany([dataToSave]).then(function(data) {
         return data;
