@@ -30,7 +30,7 @@ type Query {
 
 type Mutation {
   post(task: String!, detail: String!, taskId: String, pending: Boolean): [Post!]
-  delete(taskid: String!): Post!
+  delete(taskId: String!): Post!
 }
 
 type Post {
