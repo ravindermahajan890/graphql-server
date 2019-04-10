@@ -30,6 +30,7 @@ type Query {
 
 type Mutation {
   post(task: String!, detail: String!, taskId: String, pending: Boolean): [Post!]
+  delete(taskid: String!): Post!
 }
 
 type Post {
@@ -70,6 +71,9 @@ var resolvers = {
         return data;
       });
       return entries;
+    },
+    delete(root, args) {
+      console.log(Todo.find({ taskId: args.task }));
     }
   }
 };
