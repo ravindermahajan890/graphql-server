@@ -16,7 +16,8 @@ db.once("open", function() {
 var todoSchema = new mongoose.Schema({
   task: String,
   detail: String,
-  taskId: String
+  taskId: String,
+  pending: Boolean
 });
 var Todo = mongoose.model("todo", todoSchema);
 
