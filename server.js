@@ -73,6 +73,7 @@ var resolvers = {
       return entries;
     },
     async delete(root, args) {
+      await Todo.updateOne({ taskId: args.taskId }, { pending: false });
       var fetchData = await Todo.findOne({ taskId: args.taskId }).then(function(
         data
       ) {
