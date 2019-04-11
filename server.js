@@ -51,9 +51,7 @@ var resolvers = {
       return "world....";
     },
     async fetch(root, args) {
-      var fetchData = await Todo.find(function(e, data) {
-        return data;
-      });
+      var fetchData = await Todo.find().sort({ pending: -1 });
       return fetchData;
     }
   },
