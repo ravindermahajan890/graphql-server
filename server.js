@@ -53,7 +53,16 @@ var resolvers = {
     },
     async fetch(root, args) {
       var fetchData = await Todo.find().sort({ pending: -1 });
-      return fetchData;
+      let pendingItems = [];
+      let completedItems = [];
+      fetchData.forEach(item => {
+        if (item.pending === true) {
+          pendingItems.push(item);
+        } else {
+          completedItems.unshift(item);
+        }
+      });
+      return pendingItems.concat(completedItems);
     }
   },
   Mutation: {
